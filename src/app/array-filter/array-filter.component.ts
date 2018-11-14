@@ -52,6 +52,8 @@ export class ArrayFilterComponent implements OnInit {
     // use the filter() and pass the predicateFunction (custom/user defined function)
     // Notice that filter allows us to specify what predicate/condition
     // we want to apply to an array, but hides how the operation is carried out.
+    // Like map(), filter() lets us express what data we want
+    // without requiring us to specify how we want to collect the data.
     const filteredArray = JSON.stringify(
       this.numbers.filter(
         function(x) { return x > 2; }
@@ -59,6 +61,15 @@ export class ArrayFilterComponent implements OnInit {
       )
     );
     console.log(filteredArray);
+  }
+
+  chainFilterAndMap() {
+    // return an array such that which item of the numbers array is greater than 3 and make that item double
+    return this.numbers.filter(function (item) {
+      return item > 3;
+    }).map(function (item) {
+      return item * 2;
+    });
   }
 
 }

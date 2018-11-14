@@ -57,7 +57,8 @@ export class AppComponent implements OnInit {
       return results;
     };
     // use the map() and pass the projectionFunction (custom/user defined function)
-    // Notice that map allows us to specify what projection we want to apply to an array, but hides how the operation is carried out.
+    // Notice that map allows us to specify what projection we want to apply to an array,
+    // but hides how the operation is carried out.
     const projectedArray = JSON.stringify(
       this.numbers.map(
         function(x) { return x * 2; }
