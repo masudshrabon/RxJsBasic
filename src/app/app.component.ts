@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-
+  // reference: http://reactivex.io/learnrx/
   title = 'RxJsBasic';
   fruits = ['Mango', 'Apple', 'Banana', 'Lichi', 'Orange'];
   numbers = [1, 2, 3, 4, 5];
@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
       console.log(this.fruits[i]);
     }
   }
+
   basicForEachLoop() {
     this.fruits.forEach(element => {
       console.log(element);
@@ -27,18 +28,21 @@ export class AppComponent implements OnInit {
 
   /** Applying a function to a value
    * and creating a new value is called a projection.
-   */
-  projectArray() {
-    const projectedArray = [];
-    this.numbers.forEach(item => {
-      projectedArray.push(item + 1);
-    });
-  }
-  /** All array projections share two operations in common:
+   *
+   * All array projections share two operations in common:
    * 1. Traverse the source array
    * 2. Add each item's projected value to a new array
    * Why not abstract away how these operations are carried out?
    * ANS: ARRAY MAP();
+   */
+  projectArrayWithoutMap() {
+    const projectedArray = [];
+    this.numbers.forEach(item => {
+      projectedArray.push(item + 1);
+    });
+    return projectedArray;
+  }
+  /**
    * To make projections easier, let's add a map() function to the Array type.
    * Map accepts the projection function to be applied to each item in the source array,
    * and returns the projected array.
@@ -53,6 +57,7 @@ export class AppComponent implements OnInit {
       return results;
     };
     // use the map() and pass the projectionFunction (custom/user defined function)
+    // Notice that map allows us to specify what projection we want to apply to an array, but hides how the operation is carried out.
     const projectedArray = JSON.stringify(
       this.numbers.map(
         function(x) { return x * 2; }
