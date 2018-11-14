@@ -66,9 +66,9 @@ export class ArrayFilterComponent implements OnInit {
   chainFilterAndMap() {
     // return an array such that which item of the numbers array is greater than 3 and make that item double
     return this.numbers.filter(function (item) {
-      return item > 3;
+      return item > 3; // filter the item wheather to accept or not
     }).map(function (item) {
-      return item * 2;
+      return item * 2; // change the item
     });
   }
 
